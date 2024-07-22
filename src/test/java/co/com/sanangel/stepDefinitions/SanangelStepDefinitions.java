@@ -33,17 +33,24 @@ public class SanangelStepDefinitions {
     }
     @When("add the first product with two quantities")
     public void addTheFirstProductWithTwoQuantities() {
-        theActorInTheSpotlight().attemptsTo(ClickProductTask.clickProduct());
-        theActorInTheSpotlight().attemptsTo(AddProductTask.addProduct());
+        theActorInTheSpotlight().attemptsTo(
+                ClickProductTask.clickProduct(),
+                AddProductTask.addProduct()
+        );
     }
     @When("add second product with five quantities to the cart respectively")
     public void addSecondProductWithFiveQuantitiesToTheCartRespectively() {
-        theActorInTheSpotlight().attemptsTo(ClickProductTask.clickProduct());
-        theActorInTheSpotlight().attemptsTo(AddProductTask.addProduct());
+        theActorInTheSpotlight().attemptsTo(
+                ClickProductTask.clickProduct(),
+                AddProductTask.addProduct()
+        );
     }
     @Then("user can see the two products in the cart")
     public void userCanSeeTheTwoProductsInTheCart() {
-        theActorInTheSpotlight().should(seeThat(ValidateProducts.validate(), Matchers.equalTo(true)));
+        theActorInTheSpotlight()
+                .should
+                        (seeThat
+                                (ValidateProducts.validate(), Matchers.equalTo(true)));
     }
 
     @After
